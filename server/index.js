@@ -1,4 +1,7 @@
 // server/index.js
+import serverless from 'serverless-http';
+import express from 'express';
+import path from 'path';
 const path = require('path');
 const express = require('express');
 
@@ -8,10 +11,6 @@ const app = express();
 
 app.get("/api", (req, res) => {
     res.json({ message: "Hello from server!" });
-});
-
-app.listen(PORT, () => {
-    console.log(`Server listening on ${PORT}`);
 });
 
 // Have Node serve the files for our built React app
@@ -25,4 +24,8 @@ app.get("/api", (req, res) => {
 // All other GET requests not handled before will return our React app
 app.get('*', (req, res) => {
   res.sendFile(path.resolve(__dirname, '../client/build', 'index.html'));
+});
+
+app.listen(PORT, () => {
+  console.log(`Server listening on ${PORT}`);
 });
