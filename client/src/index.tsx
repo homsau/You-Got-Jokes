@@ -1,6 +1,6 @@
 import React from 'react';
 import ReactDOM from 'react-dom';
-import { BrowserRouter } from 'react-router-dom';
+import { BrowserRouter, StaticRouter } from 'react-router-dom'; // we will use static router later
 import './index.css';
 import App from './App';
 import reportWebVitals from './reportWebVitals';
@@ -19,6 +19,7 @@ ReactDOM.render(
 // or send to an analytics endpoint. Learn more: https://bit.ly/CRA-vitals
 reportWebVitals();
 
+// this will be used later
 // const context = {};
 // const markup = ReactDOMServer.renderToString(
 //   <StaticRouter location={req.url} context={context}>
