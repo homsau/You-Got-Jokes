@@ -15,16 +15,26 @@ function App() {
   useEffect(() => {
     const fetchJoke = async () => {
       setStatus('fetching');
-      var response = await fetch(jokeURL);
-      const jokeData = await response.json();
+      var response = await fetch(jokeURL); // fetch response from url
+      const jokeData = await response.json(); // get json response
+      console.log(jokeData); // check it
       setSetup(jokeData.setup); // assign setup variable
       setPunch(jokeData.punchline); // deliver punchline
       setStatus('fetched');
     };
-    fetchJoke();
+    fetchJoke(); // call fetchJoke function
   }, []);
-
-  /*
+  
+  useEffect(() => {
+    fetch('/api') // fetch from local api
+      .then((res) => res.json()) // get json response
+      .then((data) => {
+        setData(data.message); // load message
+      });
+  }, []);
+  
+  /* 
+  // Alternate method
   useEffect(() => {
     fetch(jokeURL) // fetch from url
       .then((res) => res.json()) // get json response
@@ -35,15 +45,6 @@ function App() {
       });
   }, []);
   */
-  
-  useEffect(() => {
-    fetch('/api') // fetch from local api
-      .then((res) => res.json()) // get json response
-      .then((data) => {
-        setData(data.message); // load message
-      });
-  }, []);
-  
   
   return (
     <div className="App">
