@@ -4,13 +4,13 @@ import './App.css';
 
 function App() {
   // set up hooks
-  const [data, setData] = React.useState(null);
-  const [setup, setSetup] = React.useState(null);
-  const [punch, setPunch] = React.useState(null);
-  
+  const [data, setData] = useState(null);
+  const [setup, setSetup] = useState(null);
+  const [punch, setPunch] = useState(null);
+
   const jokeURL = 'https://official-joke-api.appspot.com/random_joke';
 
-  React.useEffect(() => {
+  useEffect(() => {
     fetch(jokeURL) // fetch from url
       .then((res) => res.json()) // get json response
       .then((jokeData) => { // function to use data
@@ -20,7 +20,7 @@ function App() {
       });
   }, []);
   
-  React.useEffect(() => {
+  useEffect(() => {
     fetch('/api') // fetch from local api
       .then((res) => res.json()) // get json response
       .then((data) => {
