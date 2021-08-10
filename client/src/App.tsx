@@ -1,22 +1,23 @@
-import { useState, useEffect } from 'react';
+import { useState, useEffect, useRef } from 'react';
 import logo from './logo.svg';
-import './App.css';
+// import './App.css';
 import './App.scss';
+import Typist from 'react-text-typist';
+// import Typed from 'typed.js';
+// import { stringify } from 'querystring';
 // import useWebAnimations from "@wellyshen/use-web-animations";
 
 // import { setSourceMapRange } from 'typescript';
 
 function App() {
   // set up hooks
-  const [page, setPage] = useState(1);
-  const [index, setIndex] = useState(0); // this is used for type animation
-  const [jokeHistory, setJokeHistory] = useState([]); // this will store all jokes
   const [data, setData] = useState(""); // stores welcome message from local api
+  const [page, setPage] = useState(1);
+  const [jokeHistory, setJokeHistory] = useState([]); // this will store all jokes
   const [setup, setSetup] = useState(""); // stores setup
   const [punch, setPunch] = useState(""); // stores punchline
-  const [text, setText] = useState("");
-  const [fullText, setFullText] = useState(setup);
-  
+  const [joke, setJoke] = useState(""); // full joke
+
   useEffect(() => {
     fetch('/api') // fetch from local api
       .then((res) => res.json()) // get json response
@@ -26,8 +27,9 @@ function App() {
   }, []);
 
   /* ----- Here is where we fetch a new joke ----- */
-  const jokeURL = 'https://official-joke-api.appspot.com/random_joke'; // set api url
-  
+  // const jokeURL = 'https://official-joke-api.appspot.com/random_joke'; // set api url
+  const jokeURL = '/jokes/random'; // local joke api
+
   const newJoke = () => {
     setPage(page + 1); // increment page/joke count
   };
@@ -41,20 +43,11 @@ function App() {
       setJokeHistory(jokeData); // store jokes in history
       setSetup(jokeData.setup); // assign setup variable
       setPunch(jokeData.punchline); // deliver punchline
-      setFullText(jokeData.setup);
-      // setStatus('fetched'); // update status
+      setJoke(joke.concat(jokeData.setup, jokeData.punchline));
+      console.log(joke)
     };
     fetchJoke(); // call fetchJoke function
   }, [page]);
-  
-  useEffect(() => {
-    if (index <= fullText.length) {
-      setTimeout(() => {
-        setText(text + fullText[index])
-        setIndex(index + 1)
-      }, 200)
-    }
-  }, [index])
   
   return (
     <div className="App">
@@ -64,8 +57,8 @@ function App() {
         <p>{!setup ? "Joke coming soon..." : setup}</p>
         <p>{!punch ? "...or will it?" : punch}</p>
         <button onClick={newJoke}>Tell Me A Joke</button>
-
-        <h2>{text}</h2>
+        {/* {console.log(joke)} */}
+        <Typist sentences={['first','second','third']} loop={true} />
       </header>
     </div>
   );
