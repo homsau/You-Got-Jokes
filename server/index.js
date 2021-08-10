@@ -18,7 +18,7 @@ app.get("/api", (req, res) => {
 });
 
 // limit access to api. 100 requests every 10 minutes
-app.use(new LimitingMiddleware({ limit: 100, resetInterval: 600000}).limitByIp());
+// app.use(new LimitingMiddleware({ limit: 100, resetInterval: 600000}).limitByIp());
 
 app.get('/jokes/random', (req, res) => {
   res.json(randomJoke());
