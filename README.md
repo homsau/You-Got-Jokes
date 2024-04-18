@@ -2,13 +2,11 @@
 
 
 ## Super in progress
-
+-<a href="https://you-got-jokes-a29715a1ec18.herokuapp.com/" target="_blank">WebApp here</a><br>
 
 ## To Run
 cd to server folder and run: npm start
 in a separate terminal, cd to client folder and run: npm start
-
--<a href="https://you-got-jokes-a29715a1ec18.herokuapp.com/" target="_blank">Or go here</a><br>
 
 Web App using:
 
