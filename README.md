@@ -8,7 +8,7 @@
 cd to server folder and run: npm start
 in a separate terminal, cd to client folder and run: npm start
 
-Or go here -<a href="https://you-got-jokes-a29715a1ec18.herokuapp.com/" target="_blank"></a><br>
+-<a href="https://you-got-jokes-a29715a1ec18.herokuapp.com/" target="_blank">Or go here</a><br>
 
 Web App using:
 
